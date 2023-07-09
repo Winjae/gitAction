@@ -25,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: python-versions
-          path: ${{ runner.temp }}/python-versions.txt
+          path: python-artifacts.txt
