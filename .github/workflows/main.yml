@@ -18,7 +18,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Display Python version
-        run: python -c "import sys; print(sys.version)" > python-artifacts.txt
+        run: |
+          python_output_file="${{ runner.temp }}/python-versions-${{ matrix.python-version }}.txt"
+          python -c "import sys; print(sys.version)" > $python_output_file
+          echo "::set-output name=python-output-file::$python_output_file" 
         id: display
 
       - name: Save artifact
